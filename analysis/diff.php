@@ -1,7 +1,4 @@
 <?php
-	// HTML Table
-	echo '<table width="100%">' . "\n<tbody>\n<tr>\n";
-	echo '<td valign="top">' . "\nCurrent Version:<hr>\n<pre>\n";
 	
 	// Replace '<' and '>' Characters
 	if (!function_exists('replaced'))
@@ -15,7 +12,7 @@
 	// Line Arrays
 	$cv = explode("\n", replaced($value2)); // Current Version
 	$ov = explode("\n", replaced(array_key_exists($key2, $oldFiles) ? $oldFiles[$key2] : '')); // Old Version
-	
+	$value2='';
 	// Count Lines - Set to Longer Version
 	$lc = (count($cv) > count($ov)) ? count($cv) : count($ov);
 	
@@ -43,23 +40,16 @@
 			if ($cv["$l"] !== $ov["$l"]) {
 					for ($w = '0'; $w != $wc; $w++) {
 							if (@$cw["$w"] === @$ow["$w"]) {
-									echo $cw["$w"];
-									echo ($w != ($wc - 1)) ? ' ' : "\n";
+									$value2.=$cw["$w"];
+									$value2.=($w != ($wc - 1)) ? ' ' : "\n";
 							} else {
-									echo '<b style="color: #00BB00;">' . @$cw["$w"];
-									echo ($w != ($wc - 1)) ? '</b> ' : "</b>\n";
+									$value2.='<b style="weight:7">' . @$cw["$w"];
+									$value2.=($w != ($wc - 1)) ? '</b> ' : "</b>\n";
 							}
 					}
 			} else {
-					echo $cv["$l"] . "\n";
+					$value2.=$cv["$l"];
+					$value2.="\n";
 			}
 	}
-	
-	// Ending HTML Tags
-	echo "</pre>\n</td>\n<td>&nbsp;</td>\n";
-	echo '<td valign="top">' . "\nOld Version:<hr>\n<pre>\n";
-	
-	// Read and Display Old Version
-	echo replaced(array_key_exists($key2, $oldFiles) ? $oldFiles[$key2] : '') . "\n";
-	echo "</pre>\n</td>\n</tr>\n</tbody>\n</table>";
 ?>
