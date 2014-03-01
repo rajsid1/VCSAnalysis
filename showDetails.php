@@ -1,3 +1,39 @@
+<?php
+$userDetails=array(
+      "login"=> "djadmin",
+      "id"=> 2422581,
+      "avatar_url"=> "https://avatars.githubusercontent.com/u/2422581",
+      "gravatar_id"=> "99a1c6a52cc56cc25cde65be5d54081a",
+      "url"=> "https://api.github.com/users/djadmin",
+      "html_url"=> "https://github.com/djadmin",
+      "followers_url"=> "https://api.github.com/users/djadmin/followers",
+      "following_url"=> "https://api.github.com/users/djadmin/following{/other_user}",
+      "gists_url"=> "https://api.github.com/users/djadmin/gists{/gist_id}",
+      "starred_url"=> "https://api.github.com/users/djadmin/starred{/owner}{/repo}",
+      "subscriptions_url"=> "https://api.github.com/users/djadmin/subscriptions",
+      "organizations_url"=> "https://api.github.com/users/djadmin/orgs",
+      "repos_url"=> "https://api.github.com/users/djadmin/repos",
+      "events_url"=> "https://api.github.com/users/djadmin/events{/privacy}",
+      "received_events_url"=> "https://api.github.com/users/djadmin/received_events",
+      "type"=> "User",
+      "site_admin"=> false,
+      "name"=> "Dheeraj Joshi",
+      "company"=> "Vellore Institute of Technology",
+      "blog"=> null,
+      "location"=> "Vellore",
+      "email"=> "dheerajjoshi1991@gmail.com",
+      "hireable"=> true,
+      "bio"=> null,
+      "public_repos"=> 11,
+      "public_gists"=> 7,
+      "followers"=> 3,
+      "following"=> 28,
+      "created_at"=> "2012-09-25T19:07:06Z",
+      "updated_at"=> "2014-03-01T07:03:20Z"
+  );
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -19,9 +55,7 @@
     <link href="theme.css" rel="stylesheet">
 
     <!--Accordian -->
-          <link type="text/css" rel="stylesheet" href="jquery/css/jquery-ui-1.8.9.custom/jquery-ui-1.8.9.custom.css" />
-         
-         
+    <link type="text/css" rel="stylesheet" href="jquery/css/jquery-ui-1.8.9.custom/jquery-ui-1.8.9.custom.css" />     
     <!--Accordian -->    
 
 
@@ -59,17 +93,17 @@
                   <center>
                       <br/><br/><br/><br/>
                       <p>
-                       Email: <span class="text-muted"> rb@github.com</span>&nbsp&nbsp&nbsp&nbsp <br/>    
-                      Company:<span class="text-muted">GitHub</span>              &nbsp&nbsp&nbsp&nbsp<br/>
-                       Joined:<span class="text-muted"> July 9, 2009</p></span>
+                       Email: <span class="text-muted"><?php echo $userDetails["email"];?></span>&nbsp&nbsp&nbsp&nbsp <br/>    
+                      Company:<span class="text-muted"><?php echo $userDetails["company"];?></span>              &nbsp&nbsp&nbsp&nbsp<br/>
+                       Joined:<span class="text-muted"><?php echo $userDetails["created_at"];?></p></span>
                       
                     <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" src="http://platform.twitter.com/widgets/tweet_button.1392079123.html#_=1393650850479&amp;count=none&amp;id=twitter-widget-0&amp;lang=en&amp;original_referer=http%3A%2F%2Fzmoazeni.github.io%2Fgitspective%2F%23%2Ftimeline%2Farrbee&amp;size=m&amp;text=My%20gitspective%3A%20&amp;url=http%3A%2F%2Fzmoazeni.github.io%2Fgitspective%2F%23%2Ftimeline%2Farrbee" class="twitter-share-button twitter-tweet-button twitter-count-none" title="Twitter Tweet Button" data-twttr-rendered="true" style="width: 59px; height: 20px;"></iframe>
         
                   </center>
                 </div>
-                <h3 class="circular" style="background: url(https://avatars.githubusercontent.com/u/103350) no-repeat;"></h3>
-                    <p><h3>&nbsp&nbsp&nbsp&nbsp&nbspRussell Belfer&nbsp<br/> <a href="https://github.com/arrbee">
-                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp@arrbee</a></h3></p>
+                <h3 class="circular" style="background: url(<?php echo $userDetails["avatar_url"];?>) no-repeat;"></h3>
+                    <p><h3>&nbsp&nbsp&nbsp&nbsp&nbsp<?php echo $userDetails["name"];?>&nbsp<br/> <a href="https://github.com/<?php echo $userDetails['login'];?>">
+                      &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp@<?php echo $userDetails["login"];?></a></h3></p>
                   
       </div>
 

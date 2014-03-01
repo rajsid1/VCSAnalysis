@@ -43,8 +43,8 @@
 									$value2.=$cw["$w"];
 									$value2.=($w != ($wc - 1)) ? ' ' : "\n";
 							} else {
-									$value2.='<b style="weight:7">' . @$cw["$w"];
-									$value2.=($w != ($wc - 1)) ? '</b> ' : "</b>\n";
+									$value2.=@$cw["$w"];
+									$value2.=($w != ($wc - 1)) ? ' ' : "\n";
 							}
 					}
 			} else {
