@@ -625,3 +625,25 @@
 
   </body>
 </html>
+<textarea name="source" cols="50" rows="10" id="source" onclick="this.innerHTML=''" onmouseout="if(this.innerHTML.length()==0){this.innerHTML='Enter code here'}">Enter code here</textarea><div id="results"></div>
+<br><input name="RUN" type="button" value="RUN" onclick="loadXMLDoc()" />
+<script>
+function loadXMLDoc()
+{
+	var xmlhttp;
+	
+	xmlhttp=new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+		if (xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+			document.getElementById("results").innerHTML=xmlhttp.responseText;
+		}
+	}
+	CLIENT_SECRET = '089b00ffc6bcb22a7893427d784dd23cc1535a40';
+	lang = 'PYTHON'
+	xmlhttp.open("POST","../ideone/index.php",true);
+	 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+	xmlhttp.send("source="+encodeURIComponent(document.getElementById('source').value));
+}
+</script>
