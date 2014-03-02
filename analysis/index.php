@@ -728,7 +728,9 @@
 						"<pre class='brush:"+lang.toLowerCase()+"; gutter:TRUE;'>"+
 						codeArrays[i].code+
 						"</pre>"+
-						"<button>Analysis</button>&nbsp<button>Run</button>"+
+						"<button class='btn btn-xs btn-warning' onclick=\"loadXMLDoc("+i+",'ANALYSIS')\">Analysis</button>&nbsp<button class='btn btn-xs btn-info'  onclick='loadXMLDoc("+i+", 'RUN')>Run</button>"+
+						"<span class='text-warning' id='output-'"+ i +"'>&nbsp;&nbsp;&nbsp;"+
+      					"</span>"+
 						"</div>"
 						);
 			}
@@ -827,11 +829,12 @@ $(function () {
 </script>
   </body>
 </html>
-<!-- 
+<!--
 <textarea name="source" cols="50" rows="10" id="source" onclick="this.innerHTML=''" onmouseout="if(this.innerHTML.length()==0){this.innerHTML='Enter code here'}">Enter code here</textarea><div id="results"></div>
 <br><input name="RUN" type="button" value="RUN" onclick="loadXMLDoc()" />
+-->
 <script>
-function loadXMLDoc()
+function loadXMLDoc(id, but)
 {
 	var xmlhttp;
 	
@@ -840,13 +843,13 @@ function loadXMLDoc()
 	{
 		if (xmlhttp.readyState==4 && xmlhttp.status==200)
 		{
-			document.getElementById("results").innerHTML=xmlhttp.responseText;
+			document.getElementById("output-"+id).innerHTML=JSON.parse(xmlhttp.responseText).output;
 		}
 	}
 	CLIENT_SECRET = '089b00ffc6bcb22a7893427d784dd23cc1535a40';
-	lang = 'PYTHON'
-	xmlhttp.open("POST","../ideone/index.php",true);
+	lang = 'PYTHON';
+	xmlhttp.open("POST",but=='RUN'?"../ideone/index.php":"engine.php",true);
 	 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-	xmlhttp.send("source="+encodeURIComponent(document.getElementById('source').value));
+	xmlhttp.send("source="+encodeURIComponent(codeArrays[id]['code']));
 }
-</script> -->
+</script>
