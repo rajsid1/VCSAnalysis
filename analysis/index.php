@@ -29,6 +29,7 @@
 	
 	$repos[0]=array("name"=>"VCSCode", "owner"=>"rajsid1");
 	$repos[1]=array("name"=>"VCSCode1", "owner"=>"rajsid1");
+	$repos[1]=array("name"=>"VCSSample", "owner"=>"djadmin");
 	
 	foreach ($repos as $key => $value) 
 	{
