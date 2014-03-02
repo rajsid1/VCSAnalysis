@@ -242,9 +242,44 @@
                   
       </div>
 
+<div class="bs-example bs-example-tabs">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">COMMITS</a></li>
+      <li class="dropdown">
+        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">ANALYSIS <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@Language</a></li>
+          <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@Code</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="home">
+                <!-- Accordian -->
+        <div id="multiAccordion">
+
+
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="dropdown1">
+        
+            <div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        
+      </div>
+
+
+      <div class="tab-pane fade" id="dropdown2">
+       <div id="lineChart" style="height: 400px"></div>
+      </div>
+    </div>
+</div>
+<!-- /example -->
+
 
 <!-- Accordian -->
-<div id="multiAccordion">
+<!-- <div id="multiAccordion"> -->
 <?php
 /*
 
@@ -277,9 +312,9 @@
 </div>
 <!-- Accordian End -->
 <hr>
-<div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<!-- <div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div> -->
 <hr>
-<div id="lineChart" style="height: 400px"></div>
+
 <!--
 
 
@@ -640,11 +675,28 @@
         
       });
       
-      $('#multiAccordion').multiAccordion("option", "active", []);
+      $('#multiAccordion').multiAccordion("option", "active");
     });
   </script>
 <!--Accordian Ended -->
 
+<!-- TABS ADDED -->
+<script src="../tab.js"></script>
+<script>
+      $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show');
+      });
+      $('#myTab a[href="#profile"]').tab('show');
+
+     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        
+        $('#pieChart').highcharts().setSize($('#pieChart').width(),500);   
+        $('#lineChart').highcharts().setSize($('#lineChart').width(),500);    
+    })
+</script>
+
+<!-- TABS ENDED -->
 
 <script>
 	chartData={};
@@ -676,6 +728,7 @@
 						"<pre class='brush:"+lang.toLowerCase()+"; gutter:TRUE;'>"+
 						codeArrays[i].code+
 						"</pre>"+
+						"<button>Analysis</button>&nbsp<button>Run</button>"+
 						"</div>"
 						);
 			}
@@ -774,6 +827,7 @@ $(function () {
 </script>
   </body>
 </html>
+<!-- 
 <textarea name="source" cols="50" rows="10" id="source" onclick="this.innerHTML=''" onmouseout="if(this.innerHTML.length()==0){this.innerHTML='Enter code here'}">Enter code here</textarea><div id="results"></div>
 <br><input name="RUN" type="button" value="RUN" onclick="loadXMLDoc()" />
 <script>
@@ -795,4 +849,4 @@ function loadXMLDoc()
 	 xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
 	xmlhttp.send("source="+encodeURIComponent(document.getElementById('source').value));
 }
-</script>
+</script> -->

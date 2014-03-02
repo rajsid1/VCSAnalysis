@@ -41,17 +41,47 @@
  </head>
 
   <body role="document">
- <div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-<!-- Accordian -->
-<div id="multiAccordion">
+ 
 
 
+
+
+
+
+<div class="bs-example bs-example-tabs">
+    <ul id="myTab" class="nav nav-tabs">
+      <li class="active"><a href="#home" data-toggle="tab">COMMITS</a></li>
+      <li class="dropdown">
+        <a href="#" id="myTabDrop1" class="dropdown-toggle" data-toggle="dropdown">ANALYSIS <b class="caret"></b></a>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="myTabDrop1">
+          <li><a href="#dropdown1" tabindex="-1" data-toggle="tab">@Language</a></li>
+          <li><a href="#dropdown2" tabindex="-1" data-toggle="tab">@Code</a></li>
+        </ul>
+      </li>
+    </ul>
+    <div id="myTabContent" class="tab-content">
+      <div class="tab-pane fade in active" id="home">
+                <!-- Accordian -->
+        <div id="multiAccordion">
+
+
+        </div>
+      </div>
+
+
+      <div class="tab-pane fade" id="dropdown1">
+        
+            <div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+        
+      </div>
+
+
+      <div class="tab-pane fade" id="dropdown2">
+        <p>Trust fund seitan letterpress, keytar raw denim keffiyeh etsy art party before they sold out master cleanse gluten-free squid scenester freegan cosby sweater. Fanny pack portland seitan DIY, art party locavore wolf cliche high life echo park Austin. Cred vinyl keffiyeh DIY salvia PBR, banh mi before they sold out farm-to-table VHS viral locavore cosby sweater. Lomo wolf viral, mustache readymade thundercats keffiyeh craft beer marfa ethical. Wolf salvia freegan, sartorial keffiyeh echo park vegan.</p>
+      </div>
+    </div>
 </div>
-
-
-
-
-
+<!-- /example -->
 
 
 
@@ -120,7 +150,22 @@
     });
   </script>
 <!--Accordian Ended -->
+<!-- TABS ADDED -->
+<script src="../tab.js"></script>
+<script>
+      $('#myTab a').click(function (e) {
+        e.preventDefault()
+        $(this).tab('show');
+      });
+      $('#myTab a[href="#profile"]').tab('show');
 
+     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+        
+        $('#pieChart').highcharts().setSize($('#pieChart').width(),500);    
+    })
+</script>
+
+<!-- TABS ENDED -->
 <script>
 	console.log(codeArrays.length);
 	//codeArrays
@@ -178,7 +223,7 @@ console.log(realData);
 <script>
 
 $(function () {
-    $('#pieChart').highcharts({
+    var chart= $('#pieChart').highcharts({
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
