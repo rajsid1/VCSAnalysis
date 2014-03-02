@@ -1,0 +1,216 @@
+   <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="assets/ico/favicon.ico">
+
+    <title>Code Display</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap theme -->
+    <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="../theme.css" rel="stylesheet">
+
+    <!--Accordian -->
+    <link type="text/css" rel="stylesheet" href="../jquery/css/jquery-ui-1.8.9.custom/jquery-ui-1.8.9.custom.css" />     
+    <!--Accordian -->    
+
+   
+
+ 
+
+    <script>
+    var userDetails={"login":"rajsid1","id":5966237,"avatar_url":"https:\/\/avatars.githubusercontent.com\/u\/5966237","gravatar_id":"f599f80bdf45d64479290398eb4309bb","url":"https:\/\/api.github.com\/users\/rajsid1","html_url":"https:\/\/github.com\/rajsid1","followers_url":"https:\/\/api.github.com\/users\/rajsid1\/followers","following_url":"https:\/\/api.github.com\/users\/rajsid1\/following{\/other_user}","gists_url":"https:\/\/api.github.com\/users\/rajsid1\/gists{\/gist_id}","starred_url":"https:\/\/api.github.com\/users\/rajsid1\/starred{\/owner}{\/repo}","subscriptions_url":"https:\/\/api.github.com\/users\/rajsid1\/subscriptions","organizations_url":"https:\/\/api.github.com\/users\/rajsid1\/orgs","repos_url":"https:\/\/api.github.com\/users\/rajsid1\/repos","events_url":"https:\/\/api.github.com\/users\/rajsid1\/events{\/privacy}","received_events_url":"https:\/\/api.github.com\/users\/rajsid1\/received_events","type":"User","site_admin":false,"name":"Rajdeep Siddhapura","company":"VIT","blog":"","location":"India","email":"raj.webify@gmail.com","hireable":false,"bio":null,"public_repos":3,"public_gists":0,"followers":0,"following":0,"created_at":"2013-11-18T06:58:31Z","updated_at":"2014-03-01T20:24:56Z"};
+	var codeArrays = [{"repo":"VCSCode","fileName":"README.md","sha":"c98f1a60abbcda7e88a07e7d8891845614263480","time":"2014-03-01T06:08:47Z","code":"VCSCode\n=======\n\n","startLine":1,"encoding":"base64","commitMessage":"Merge pull request #1 from rajsid1\/new_gem_java\n\nadds new java file - gem.java"},{"repo":"VCSCode","fileName":"gems.java","sha":"c98f1a60abbcda7e88a07e7d8891845614263480","time":"2014-03-01T06:08:47Z","code":"import java.io.*;\nimport java.util.*;\nclass gems\n{\n\tstatic byte arr[] ={1,2,4,8,16,32,37};\n\tstatic ArrayList&lt;String&gt; alist=new ArrayList&lt;String&gt;(10);\n\tpublic static void main(String args[])throws IOException\n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tbyte n=0,d=0;\n\t\tbyte input=0;\n\t\ttry\n\t\t{\n\t\t\tn=sc.nextByte();\n\t\t\tif(n&lt;1||n&gt;100)\n\t\t\t\tthrow new Exception(\"raj\");\n\t\t\tinput++;\t\n\t\t\td=sc.nextByte();\n\t\t\tif(d&lt;1||d&gt;100)\n\t\t\t\tthrow new Exception(\"raj\");\n\t\t\t\n\t\t\tif(n&gt;37)  \/\/n=75\n\t\t\t{\n\t\t\t\tn=(byte)(100-n); \/\/n=25\n\t\t\t\tbyte sum=0;\n\t\t\t\tbyte k;\n\t\t\t\tfor(k=0;k&lt;7;k++)\n\t\t\t\t{\n\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\tif(sum&gt;n)\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\t\t\t\n\t\t\t\t\/\/System.out.println(\"-&gt;\"+(byte)(n-sum+arr[k]));\n\t\t\t\tarr[k++]=(byte)(n-sum+arr[k-1]);\n\t\t\t\t\/\/System.out.println(\"-&gt;\"+arr[k]);\n\t\t\t\tarr[k++]=(byte)(100-n);\n\t\t\t\t\n\t\t\t\tfor(;k&lt;7;k++)\n\t\t\t\t\tarr[k]=0;\n\t\t\t}\n\t\t\telse if(n&lt;37)  \/\/n=10\n\t\t\t{\n\t\t\t\tbyte k;\n\t\t\t\tbyte sum=0;\n\t\t\t\tfor(k=0;k&lt;7;k++)\n\t\t\t\t{\n\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\tif(arr[k]&gt;n)\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tsum-=arr[k];\n\t\t\t\tif(arr[k-1]!=n)\n\t\t\t\t{\n\t\t\t\t\tarr[k++]=n;\n\t\t\t\t\tsum+=n;\n\t\t\t\t\tfor(;k&lt;7;k++)\n\t\t\t\t\t{\n\t\t\t\t\t\tif(sum&lt;48)\t\n\t\t\t\t\t\t\tarr[k]=(byte)(sum+1);\n\t\t\t\t\t\telse\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tarr[k]=(byte)(100-sum);\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\tsort();\n\t\t\t\n\t\t\tfor(byte k=0;k&lt;7;k++)\n\t\t\t{\n\t\t\t\tSystem.out.print(arr[k]+\" \");\n\t\t\t}\n\t\t\tSystem.out.println();\n\t\t\t\n\t\t\tpermute(\"\",\"0123456\",d);\n\t\t\t\t\n\t\t\tfor(byte k=0;k&lt;alist.get(0).length();k++)\n\t\t\t{\n\t\t\t\tSystem.out.print(arr[Integer.parseInt(String.valueOf(alist.get(0).charAt(k)))]+\" \");\n\t\t\t}\n\t\t\t\n\t\t\tSystem.exit(0);\n\t\t}\n\t\tcatch(InputMismatchException e)\n\t\t{\n\t\t\t\n\t\t}\n\t\tcatch(Exception e)\n\t\t{\n\t\t}\n\t\t\n\t\tBufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n\t\twhile(input++&lt;1)\n\t\t\tbr.readLine();\n\t\t\t\n\t\tSystem.out.print(\"Invalid Input\");\n\t}\n\t\n\tstatic void permute(String parsed, String left, byte sum)\n\t{\t\n\t\t\/\/System.out.println(\"parsed : \"+parsed+\"   left : \"+left+\"   sum : \"+sum);\n\t\t\n\t\tif(sum==0)\n\t\t{\n\t\t\talist.add(parsed);\n\t\t\t\/\/System.out.println(\"answer:\"+parsed);\n\t\t}\n\t\telse if(sum&gt;0)\n\t\t{\n\t\t\tfor(byte k=0;k&lt;left.length();k++)\n\t\t\t{\n\t\t\t\tif(arr[Integer.parseInt(String.valueOf(left.charAt(k)))]&lt;=sum)\n\t\t\t\t{\n\t\t\t\t\tpermute((parsed+String.valueOf(left.charAt(k))), (left.substring(0,k)+left.substring(k+1)), (byte)(sum-arr[Integer.parseInt(String.valueOf(left.charAt(k)))]));\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tstatic void sort()\n\t{\t\n\t\tfor(byte i=0;i&lt;7;i++)\n\t\t{\n\t\t\tfor(byte j=(byte)(i+1);j&lt;7;j++)\n\t\t\t{\n\t\t\t\tif(arr[i]&gt;arr[j])\n\t\t\t\t{\n\t\t\t\t\tarr[i]=(byte)(arr[i]+arr[j]);\n\t\t\t\t\tarr[j]=(byte)(arr[i]-arr[j]);\n\t\t\t\t\tarr[i]=(byte)(arr[i]-arr[j]);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n","startLine":1,"encoding":"base64","commitMessage":"Merge pull request #1 from rajsid1\/new_gem_java\n\nadds new java file - gem.java"},{"repo":"VCSCode","fileName":"README.md","sha":"c98f1a60abbcda7e88a07e7d8891845614263480","time":"2014-03-01T06:03:26Z","code":"VCSCode\n=======\n\n","startLine":1,"encoding":"base64","commitMessage":"adds new java file - gem.java"},{"repo":"VCSCode","fileName":"gems.java","sha":"c98f1a60abbcda7e88a07e7d8891845614263480","time":"2014-03-01T06:03:26Z","code":"import java.io.*;\nimport java.util.*;\nclass gems\n{\n\tstatic byte arr[] ={1,2,4,8,16,32,37};\n\tstatic ArrayList&lt;String&gt; alist=new ArrayList&lt;String&gt;(10);\n\tpublic static void main(String args[])throws IOException\n\t{\n\t\tScanner sc=new Scanner(System.in);\n\t\tbyte n=0,d=0;\n\t\tbyte input=0;\n\t\ttry\n\t\t{\n\t\t\tn=sc.nextByte();\n\t\t\tif(n&lt;1||n&gt;100)\n\t\t\t\tthrow new Exception(\"raj\");\n\t\t\tinput++;\t\n\t\t\td=sc.nextByte();\n\t\t\tif(d&lt;1||d&gt;100)\n\t\t\t\tthrow new Exception(\"raj\");\n\t\t\t\n\t\t\tif(n&gt;37)  \/\/n=75\n\t\t\t{\n\t\t\t\tn=(byte)(100-n); \/\/n=25\n\t\t\t\tbyte sum=0;\n\t\t\t\tbyte k;\n\t\t\t\tfor(k=0;k&lt;7;k++)\n\t\t\t\t{\n\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\tif(sum&gt;n)\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\t\t\t\n\t\t\t\t\/\/System.out.println(\"-&gt;\"+(byte)(n-sum+arr[k]));\n\t\t\t\tarr[k++]=(byte)(n-sum+arr[k-1]);\n\t\t\t\t\/\/System.out.println(\"-&gt;\"+arr[k]);\n\t\t\t\tarr[k++]=(byte)(100-n);\n\t\t\t\t\n\t\t\t\tfor(;k&lt;7;k++)\n\t\t\t\t\tarr[k]=0;\n\t\t\t}\n\t\t\telse if(n&lt;37)  \/\/n=10\n\t\t\t{\n\t\t\t\tbyte k;\n\t\t\t\tbyte sum=0;\n\t\t\t\tfor(k=0;k&lt;7;k++)\n\t\t\t\t{\n\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\tif(arr[k]&gt;n)\n\t\t\t\t\t\tbreak;\n\t\t\t\t}\n\t\t\t\tsum-=arr[k];\n\t\t\t\tif(arr[k-1]!=n)\n\t\t\t\t{\n\t\t\t\t\tarr[k++]=n;\n\t\t\t\t\tsum+=n;\n\t\t\t\t\tfor(;k&lt;7;k++)\n\t\t\t\t\t{\n\t\t\t\t\t\tif(sum&lt;48)\t\n\t\t\t\t\t\t\tarr[k]=(byte)(sum+1);\n\t\t\t\t\t\telse\n\t\t\t\t\t\t{\n\t\t\t\t\t\t\tarr[k]=(byte)(100-sum);\n\t\t\t\t\t\t}\n\t\t\t\t\t\tsum+=arr[k];\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n\t\t\tsort();\n\t\t\t\n\t\t\tfor(byte k=0;k&lt;7;k++)\n\t\t\t{\n\t\t\t\tSystem.out.print(arr[k]+\" \");\n\t\t\t}\n\t\t\tSystem.out.println();\n\t\t\t\n\t\t\tpermute(\"\",\"0123456\",d);\n\t\t\t\t\n\t\t\tfor(byte k=0;k&lt;alist.get(0).length();k++)\n\t\t\t{\n\t\t\t\tSystem.out.print(arr[Integer.parseInt(String.valueOf(alist.get(0).charAt(k)))]+\" \");\n\t\t\t}\n\t\t\t\n\t\t\tSystem.exit(0);\n\t\t}\n\t\tcatch(InputMismatchException e)\n\t\t{\n\t\t\t\n\t\t}\n\t\tcatch(Exception e)\n\t\t{\n\t\t}\n\t\t\n\t\tBufferedReader br=new BufferedReader(new InputStreamReader(System.in));\n\t\twhile(input++&lt;1)\n\t\t\tbr.readLine();\n\t\t\t\n\t\tSystem.out.print(\"Invalid Input\");\n\t}\n\t\n\tstatic void permute(String parsed, String left, byte sum)\n\t{\t\n\t\t\/\/System.out.println(\"parsed : \"+parsed+\"   left : \"+left+\"   sum : \"+sum);\n\t\t\n\t\tif(sum==0)\n\t\t{\n\t\t\talist.add(parsed);\n\t\t\t\/\/System.out.println(\"answer:\"+parsed);\n\t\t}\n\t\telse if(sum&gt;0)\n\t\t{\n\t\t\tfor(byte k=0;k&lt;left.length();k++)\n\t\t\t{\n\t\t\t\tif(arr[Integer.parseInt(String.valueOf(left.charAt(k)))]&lt;=sum)\n\t\t\t\t{\n\t\t\t\t\tpermute((parsed+String.valueOf(left.charAt(k))), (left.substring(0,k)+left.substring(k+1)), (byte)(sum-arr[Integer.parseInt(String.valueOf(left.charAt(k)))]));\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\tstatic void sort()\n\t{\t\n\t\tfor(byte i=0;i&lt;7;i++)\n\t\t{\n\t\t\tfor(byte j=(byte)(i+1);j&lt;7;j++)\n\t\t\t{\n\t\t\t\tif(arr[i]&gt;arr[j])\n\t\t\t\t{\n\t\t\t\t\tarr[i]=(byte)(arr[i]+arr[j]);\n\t\t\t\t\tarr[j]=(byte)(arr[i]-arr[j]);\n\t\t\t\t\tarr[i]=(byte)(arr[i]-arr[j]);\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n}\n","startLine":1,"encoding":"base64","commitMessage":"adds new java file - gem.java"},{"repo":"VCSCode","fileName":"README.md","sha":"85a5ceb0a04a4ba7df5a9de1c5819b7095f63235","time":"2014-03-01T05:51:24Z","code":"VCSCode\n=======\n\n","startLine":1,"encoding":"base64","commitMessage":"Initial commit"},{"repo":"VCSCode1","fileName":"README.md","sha":"7ed35b33d45e52adf64610061c8e073fcbb6d093","time":"2014-03-01T17:55:10Z","code":"VCScode1\n========\n\n","startLine":1,"encoding":"base64","commitMessage":"Initial commit"}];
+	var langs=[{"md":"Plain","java":"Java","c":"cpp","cpp":"cpp","cs":"CSharp","css":"Css","js":"JScript","php":"Php","py":"Python","rb":"Ruby","xml":"Xml"}];
+	</script>
+	<script>	
+	// $( document ).ready(function() {
+
+	// 		console.log($("#multiAccordion"));
+	// });
+	</script>
+
+ </head>
+
+  <body role="document">
+ <div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<!-- Accordian -->
+<div id="multiAccordion">
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="../dist/js/bootstrap.min.js"></script>
+    <script src="../assets/js/docs.min.js"></script>
+
+  <!-- Syntax Highlighter -->
+  <script type="text/javascript" src="../syntax/scripts/shCore.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushJava.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushcpp.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushCSharp.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushCss.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushJScript.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushPhp.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushPython.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushRuby.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushXml.js"></script>
+  <script type="text/javascript" src="../syntax/scripts/shBrushPlain.js"></script>
+  <link type="text/css" rel="stylesheet" href="../syntax/styles/shCoreDefault.css"/>
+  <link type="text/css" rel="Stylesheet" href="../syntax/Styles/shThemeMidnight.css"/>
+  <script type="text/javascript">
+      SyntaxHighlighter.all();
+      SyntaxHighlighter.config.strings.expandSource="+ Expand Source";
+      SyntaxHighlighter.config.strings.aboutDialog="For more Help, Ping us at @VCSAnalysis";
+      SyntaxHighlighter.config.strings.alert="Ping us @VCSAnalyis";
+      SyntaxHighlighter.config.strings.help="!";
+      
+      //Configuration
+      
+      //var sh=SyntaxHighlighter.defaults;
+      
+  </script>
+
+  <!-- SH End -->
+  <!--Accordian -->
+    <script type="text/javascript" src="../jquery/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="../jquery/jquery.multi-accordion-1.5.3.js"></script> 
+
+  <script type="text/javascript">
+    $(function(){
+      $('#multiAccordion').multiAccordion({
+        active: [1, 2],
+        click: function(event, ui) {
+          //console.log('clicked')
+        },
+        init: function(event, ui) {
+          //console.log('whoooooha')
+        },
+        tabShown: function(event, ui) {
+          //console.log('shown')
+        },
+        tabHidden: function(event, ui) {
+          //console.log('hidden')
+        }
+        
+      });
+      
+      $('#multiAccordion').multiAccordion("option", "active", []);
+    });
+  </script>
+<!--Accordian Ended -->
+
+<script>
+	console.log(codeArrays.length);
+	//codeArrays
+	chartData={};
+for(i in codeArrays){
+		 // echo "<i>$commitMessage</i>";
+   //  echo "<pre class='brush:".strtolower($lang)."; gutter:TRUE;'>";
+   //  //echo ($encoding=="base64")?base64_decode($code):utf8_decode($code);
+   //  echo $code;
+   //  echo "</pre>";
+   
+    if(codeArrays[i].hasOwnProperty("fileName")){
+    	console.log(codeArrays[i]);
+	   	var ext=codeArrays[i].fileName.split('.').pop();
+	   	console.log("ext->"+ext);
+	   	var lang=langs[0].hasOwnProperty(ext)?langs[0][ext]:"Plain";
+
+		 	if(chartData.hasOwnProperty(lang)){
+		 		chartData[lang]=chartData[lang]+1;
+		 	}
+		 	else
+		 	{
+		 			chartData[lang]=1;
+		 	}
+
+	 	}
+	   	
+
+	   	
+			$("#multiAccordion").append(
+				"<h3><a href='#'>"+codeArrays[i].fileName+"</a></h3><div>"+
+				"<i>"+codeArrays[i].commitMessage+"</i>"+
+				"<pre class='brush:"+lang.toLowerCase()+"; gutter:TRUE;'>"+
+				codeArrays[i].code+
+				"</pre>"+
+				"</div>"
+				);
+		
+
+    
+    
+}
+console.log(chartData);
+realData=[];
+for(var i in chartData)
+    realData.push([i, chartData [i]]);
+console.log(realData);
+</script>
+
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<script>
+
+$(function () {
+    $('#pieChart').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser market shares at a specific website, 2010'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data:realData
+        }]
+    });
+});
+    
+
+</script>
+  </body>
+</html>

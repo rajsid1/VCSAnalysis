@@ -5,6 +5,8 @@
 	echo "</pre>";
 */
 	$user = isset($_GET['user']) ? $_GET['user'] : 'rajsid1';
+	 $langs=array("md"=>"Plain","java"=>"Java","c"=>"cpp","cpp"=>"cpp","cs"=>"CSharp","css"=>"Css","js"=>"JScript","php"=>"Php","py"=>"Python","rb"=>"Ruby","xml"=>"Xml");
+   
 	//echo $user."<br><br>";
 	require_once("constants.php");
 	require_once("userDetails.php");
@@ -172,6 +174,12 @@
     <link type="text/css" rel="stylesheet" href="../jquery/css/jquery-ui-1.8.9.custom/jquery-ui-1.8.9.custom.css" />     
     <!--Accordian -->    
 
+    <script>
+    var userDetails=<?php echo json_encode($userDetails); ?>;
+	var codeArrays = <?php echo json_encode($codeArrays); ?>;
+	var langs = <?php echo json_encode($langs); ?>;
+	//alert(langs);
+	</script>
 
   </head>
 
@@ -194,6 +202,18 @@
             <li class="active"><a href="#">Home</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">SortBy <b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Repo</a></li>
+                <li><a href="#">FileType</a></li>
+                
+                <li class="divider"></li>
+                <li class="dropdown-header">Search</li>
+                <li><a href="#">Simple</a></li>
+                <li><a href="#">Regex</a></li>
+              </ul>
+            </li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -225,7 +245,7 @@
 <!-- Accordian -->
 <div id="multiAccordion">
 <?php
-
+/*
 
 
   foreach ($codeArrays as $id => $codeArray) {
@@ -241,8 +261,7 @@
     $ext = pathinfo($fileName, PATHINFO_EXTENSION);
 
     //Syntax Highlighting bases on the code extension
-    $langs=array("md"=>"Plain","java"=>"Java","c"=>"cpp","cpp"=>"cpp","cs"=>"CSharp","css"=>"Css","js"=>"JScript","php"=>"Php","py"=>"Python","rb"=>"Ruby","xml"=>"Xml");
-    $lang = array_key_exists($ext, $langs) ? $langs[$ext] : "Plain";
+        $lang = array_key_exists($ext, $langs) ? $langs[$ext] : "Plain";
 
     echo "<h3><a href='#'>$fileName</a></h3>";
     echo "<div>";
@@ -253,9 +272,14 @@
     echo "</pre>";
     echo "</div>";
  }
-  
+  */ 
 ?>
+</div>
 <!-- Accordian End -->
+<hr>
+<div id="pieChart" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<hr>
+<div id="lineChart" style="height: 400px"></div>
 <!--
 
 
@@ -594,7 +618,7 @@
 
   <!-- SH End -->
   <!--Accordian -->
-    <script type="text/javascript" src="../jquery/jquery-ui-1.8.13.custom.min.js"></script>
+    <script type="text/javascript" src="../jquery/jquery-ui.min.js"></script>
     <script type="text/javascript" src="../jquery/jquery.multi-accordion-1.5.3.js"></script> 
 
   <script type="text/javascript">
@@ -622,7 +646,132 @@
 <!--Accordian Ended -->
 
 
+<script>
+	chartData={};
+	for(i in codeArrays){
+		 // echo "<i>$commitMessage</i>";
+   //  echo "<pre class='brush:".strtolower($lang)."; gutter:TRUE;'>";
+   //  //echo ($encoding=="base64")?base64_decode($code):utf8_decode($code);
+   //  echo $code;
+   //  echo "</pre>";
+   
+    if(codeArrays[i]!==undefined){
+    		if(codeArrays[i].hasOwnProperty("fileName")){
+		    	console.log(codeArrays[i]);
+			   	var ext=codeArrays[i].fileName.split('.').pop();
+			   	console.log("ext->"+ext);
+			   	var lang=langs.hasOwnProperty(ext)?langs[ext]:"Plain";
+			   	if(chartData.hasOwnProperty(lang)){
+				 		chartData[lang]=chartData[lang]+1;
+				}
+				else
+				{
+				 			chartData[lang]=1;
+				}
 
+			   	console.log(lang);
+					$("#multiAccordion").append(
+						"<h3><a href='#'>"+codeArrays[i].fileName+"</a></h3><div>"+
+						"<i>"+codeArrays[i].commitMessage+"</i>"+
+						"<pre class='brush:"+lang.toLowerCase()+"; gutter:TRUE;'>"+
+						codeArrays[i].code+
+						"</pre>"+
+						"</div>"
+						);
+			}
+
+    } 
+
+}
+realData=[];
+for(var i in chartData)
+    realData.push([i, chartData [i]]);
+
+
+</script>
+<!------------------------------Highcharts----------------------> 
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>
+
+
+<script>
+
+$(function () {
+    $('#pieChart').highcharts({
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Programming Languages used by the user'
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Language used',
+            data:realData
+        }]
+    });
+});
+    
+
+</script>
+<!------------------------------Highcharts1 Ends----------------------> 
+<!------------------------------Highcharts2 Starts----------------------> 
+<script>
+$(function () {
+    $('#lineChart').highcharts({
+        chart: {
+            marginRight: 80, // like left
+            title:"Code Performance Analysis"
+        },
+        title: {
+            text: 'Code Complexity Checker',
+            x: 0 //center
+        },
+          xAxis: [{
+              categories: ['A','B','C','D']
+        }],
+        yAxis: [{
+            lineWidth: 1,
+            title: {
+                text: 'Time Taken'
+            }
+        }, {
+            lineWidth: 1,
+            opposite: true,
+            title: {
+                text: 'Memory Used'
+            }
+        }],
+        
+        series: [{
+            name: "Time Complexity",
+            data: [6.2,3.0,4.2,5.7]
+        }, {
+            name: "Space Complexity",
+            data: [256,512,308,217] ,
+            yAxis: 1
+        }]
+    });
+});
+
+</script>
   </body>
 </html>
 <textarea name="source" cols="50" rows="10" id="source" onclick="this.innerHTML=''" onmouseout="if(this.innerHTML.length()==0){this.innerHTML='Enter code here'}">Enter code here</textarea><div id="results"></div>
