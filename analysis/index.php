@@ -252,8 +252,7 @@
   foreach ($codeArrays as $id => $codeArray) {
     $repo=$codeArray["repo"];
     $fileName=$codeArray["fileName"];
-    $sha=$codeArray["sha"];
-    $time=$codeArray["time"];
+    $sha=$codeArray["sha"];    $time=$codeArray["time"];
     $code=$codeArray["code"];
     $startLine=$codeArray["startLine"];
     $encoding=$codeArray["encoding"];
