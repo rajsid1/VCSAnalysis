@@ -16,16 +16,16 @@
 	// Line Arrays
 	$lines = explode("\n", replaced($source));
 	
-	for ($i=0; $i<count($lines);$i++)
+	for ($i=1; $i<count($lines)+1;$i++)
 	{
-		if (preg_match("/[^_]input/", $lines[$i], $match))
+		if (preg_match("/[^_]input/", $lines[$i-1], $match))
 		{
-			$arr['output']+= "On line# ($i+1) : Avoid using input(). Use raw_input(). <br>";
+			$arr['output'].= "On line# $i : Avoid using input(). Use raw_input(). <br>";
 		}
-		if (preg_match("/[^_]range/", $lines[$i], $match))
+		if (preg_match("/[^_]range/", $lines[$i-1], $match))
 		{
-			$arr['output']+= "On line# ($i+1) : Avoid using range(). Use x_range()";
+			$arr['output'].= "On line# $i+ : Avoid using range(). Use x_range()";
 		}
 	}
-	print_r($arr);
+	echo json_encode($arr);
 ?>
